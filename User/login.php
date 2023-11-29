@@ -9,7 +9,7 @@
 <div>
     <h1>Iniciar Sesión</h1>
     <?php
-    phpinfo()
+    phpinfo();
     ?>
     <form method="post" action="../action/login.php">
         <!-- Formulario de inicio de sesión -->
