@@ -1,72 +1,60 @@
 <?php
-session_start();
-include('include/header.php');
 
-if (!isset($_SESSION['user_id'])) {
-    header('location: index.php');
-    exit;
-}
+#PARA AGREGAR DATOS DESDE LA TABLA 
 
-$hostname = 'localhost';
-$username = 'root';
-$database = 'auth';
-$password = '';
-$port = 4000;
+require_once '../DB/conn.php';
+session_start(); 
+$user_id= $_SESSION['dato']['id'];
 
-// Verificar si se envió el formulario de edición
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Procesamiento del formulario de edición y actualización de la base de datos
-    $user_id = $_SESSION['user_id'];
-    $nombre = $_POST['nombre'];
+if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto'])){
     $email = $_POST['email'];
-    // Agrega más campos según tu esquema de base de datos
+    $password = $_POST['password']; 
+    $nombres= $_POST['nombres'];
+    $bio= $_POST['bio'];
+    $telefono= $_POST['telefono'];
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+    
+    $base_url = '../upload/';
+    $tmp = $_FILES['foto']['tmp_name'];
+    $imgName = $_FILES['foto']['nombres'];
+    $ext = pathinfo($imgName, PATHINFO_EXTENSION);
+    $url = $base_url . "profile_$user_id." . $ext;
+    move_uploaded_file($tmp, $url);
+   
 
-    try {
-        $mysqli = new mysqli($hostname, $username, $password, $database, $port);
-        if ($mysqli->connect_error) {
-            die('Connection failed: ' . $mysqli->connect_error);
-        }
+$query = 'UPDATE usuario SET `email` = ?,  `password` = ?, `foto`= ?, `nombres`= ?, `bio`= ?, `telefono` = ? WHERE id = ?';
 
-        // Actualizar información del usuario en la base de datos
-        $stmt = $mysqli->prepare("UPDATE usuarios SET nombre = ?, email = ? WHERE id = ?");
-        if (!$stmt) {
-            die('Error al preparar la consulta: ' . $mysqli->error);
-        }
-        $stmt->bind_param("ssi", $nombre, $email, $user_id);
-        $stmt->execute();
-        $stmt->close();
 
-        // Puedes agregar más lógica de actualización según tus necesidades
+try{
 
-        echo 'Información actualizada correctamente.';
-    } catch (mysqli_sql_exception $e) {
-        echo 'Error: ' . $e->getMessage();
-    }
+    $stm = $pdo->prepare($query);
+    $rs = $stm->execute([
+        $email,
+        $hash,
+        #$password,
+        #$foto,
+        $url, 
+        $nombres,
+        $bio,
+        $telefono,
+        $user_id ,
+    ]);
 
-    $mysqli->close();
+    $sql = "SELECT * FROM usuario WHERE `id`= ?";
+    $stm1 = $pdo->prepare($sql);
+    $stm1->execute(
+        [$user_id]
+    );
+
+    $rs = $stm1->fetch(PDO::FETCH_ASSOC);
+
+    session_start(); 
+    $_SESSION['dato'] = $rs;
+    $dato = $_SESSION['dato'];
+
+   header('location: ../user/personal_info.php');
+} catch (PDOException $e){
+    echo $e->getMessage(); 
+} 
+
 }
-
-// Obtener y mostrar información actual del usuario desde la base de datos
-// Puedes reutilizar el código que obtiene la información del usuario en la sección anterior
-
-?>
-
-<div>
-    <h1>Editar Información Personal</h1>
-    <form method="post" action="edit.php">
-        <!-- Formulario de edición -->
-        <label>CHANGE PHOTO: <input type="file" name="email" value="<?php echo $usuario['foto']; ?>"></label>
-        <label>Name: <input type="text" name="nombre" value="<?php echo $usuario['nombre']; ?>" required></label>
-        <label>Email: <input type="email" name="email" value="<?php echo $usuario['email']; ?>" required></label>
-        <label>Bio: <input type="text" name="text" value="<?php echo $usuario['text']; ?>" required></label>
-        <label>Phone: <input type="number" name="telefono" value="<?php echo $usuario['telefono']; ?>" required></label>
-        <label>Email: <input type="email" name="email" value="<?php echo $usuario['email']; ?>" required></label>
-        <label>Password: <input type="password" name="password" value="<?php echo $usuario['password']; ?>" required></label>
-        <!-- Agrega más campos según tu esquema de base de datos -->
-        <button type="submit">Guardar Cambios</button>
-    </form>
-</div>
-
-<?php
-include('include/footer.php');
-?>

@@ -1,23 +1,31 @@
-const container = document.getElementById('container');
-const registerBtn = document.getElementById('register');
-const loginBtn = document.getElementById('login');
+const li1 = document.querySelector('.liInteractive');
+const li2 = document.querySelector('.liInteractive2');
+const li3 = document.querySelector('.liInteractive3');
 
-registerBtn.addEventListener('click', function (){
-    container.classList.add('active')
+li1.addEventListener('mouseover', function () {
+    li1.classList.add('paintInteractive');
+    li2.classList.remove('paintInteractive');
+    li3.classList.remove('paintInteractive');
+
 })
-loginBtn.addEventListener('click', () => {
-    container.classList.remove('active')
+
+li2.addEventListener('mouseover', function () {
+    li1.classList.remove('paintInteractive');
+    li2.classList.add('paintInteractive');
+    li3.classList.remove('paintInteractive');
+
 })
-const registroForm = document.getElementById("registroForm");
-const loginButton = document.getElementById("login");
-const registerButton = document.getElementById("register");
 
-loginButton.addEventListener("click", () => {
-    registroForm.action = "registro_form.php";
-    registroForm.submit();
-});
+li3.addEventListener('mouseover', function () {
+    li1.classList.remove('paintInteractive');
+    li2.classList.remove('paintInteractive');
+    li3.classList.add('paintInteractive');
 
-registerButton.addEventListener("click", () => {
-    registroForm.action = "registro_form.php";
-    registroForm.submit();
-});
+})
+
+const interactiveName = document.querySelector('.interactiveName');
+const desplegarMenu = document.querySelector('.interactiveMenu');
+
+interactiveName.addEventListener('click', function () {
+    desplegarMenu.classList.toggle('desplegar');
+})

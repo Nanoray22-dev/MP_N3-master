@@ -1,0 +1,327 @@
+*{
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
+    font-family: 'Noto Sans', sans-serif;
+
+}
+
+nav{
+    padding: 10px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.linkBack{
+text-decoration: none;
+color: #2D9CDB;
+}
+
+.changeInfo{
+font-size: 24px;
+font-weight: 400;
+letter-spacing: -0.035em;
+margin-top: 25px;
+}
+
+.changesWill{
+font-size: 13px;
+letter-spacing: -0.035em;
+color: #fff;
+padding-top: 7px;
+
+}
+
+.changePhoto{
+font-size: 13px;
+line-height: 18px;
+letter-spacing: -0.035em;
+
+}
+
+label{
+width: 36px;
+font-size: 13px;
+
+
+
+}
+
+.inputEditInfo{
+width: 416.93px;
+height: 52px;
+border-radius: 12px;
+border: 1px solid #828282;
+margin-bottom: 20px;
+padding: 0px 20px;
+outline: none;
+margin-top: 5px;
+}
+
+.btnSave{
+    width: 82px;
+    height: 38px;
+    border-radius: 8px;
+    background: #2F80ED;
+    color: white;
+    font-size: 16px;
+    border: none;
+    margin-top: 15px;
+}
+
+.btnSave:hover{
+    background: #318bff;
+    transition: background-color 0.3s;
+    cursor: pointer;
+
+}
+
+.linksFoot{
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.aLink{
+    text-decoration:underline;
+
+}
+
+.container{
+width: 845.91px;
+height: 777.56px; 
+border-radius: 12px;
+border: 1px solid #E0E0E0;
+margin-top: 10px;
+padding: 0px 40px;
+}
+
+.changePhoto{
+    display: flex;
+    align-items: center;
+    padding: 30px 0px;
+}
+
+.inputBio{
+width: 416.93px;
+height: 91.58px;
+border-radius: 12px;
+border: 1px solid #828282;
+margin-bottom: 20px;
+margin-top: 5px;
+outline: none;
+padding: 0px 20px;
+padding-bottom: 35px;
+line-height: 1.5px;
+}
+
+.bigContainerAll{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerNavInteractive{
+width: 188px;
+height: 174px;
+border-radius: 12px;
+border: 1px;
+border: 1px solid #E0E0E0;
+visibility: hidden;
+position: absolute;
+/*mueve la posicion de la caja interactiva*/
+top: 50px;
+right: 20px;
+
+}
+
+
+/*ETIQUETA QUE AGREGA COLOR*/
+.myProfileNav{
+width: 154.12px; /*164.12*/
+height: 39.15px;
+border-radius: 8px;
+background: #F2F2F2;
+}
+
+.aTextInteractive{
+    color: #4F4F4F;
+    text-decoration: none;
+
+}
+
+ul{
+    list-style: none;
+}
+
+.logOutText{
+   color: #EB5757;
+}
+
+.logoutDiv{
+    width: 95px;
+    height: 16px;
+    top: 153.7px;
+    left: 1229.64px;
+}
+
+.invisible{
+visibility: visible;
+}
+
+.myProfilePosition{
+margin: 20px 0px 0px 20px;
+
+}
+
+.myProfilePositionLast{
+    margin: 20px;
+    padding-top: 5px;
+    border-top: solid 1px #E0E0E0;
+}
+
+.liInteractive3{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    gap: 10px;
+    padding-left: 5px;
+}
+
+.liInteractive2{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    gap: 10px;
+    padding-left: 5px;
+
+}
+
+.liInteractive{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    gap: 10px;
+    padding-left: 5px;
+
+}
+
+
+.changeTittle{
+    display: inline-block;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 130px;
+
+}
+
+.changeTittle .textFoto{
+    display: inline-block;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  
+}
+.changeTittle .textFoto:hover{
+    color: #318bff;
+}
+
+#foto{
+display: none;
+}
+
+.cuadrado{
+width: 72px;
+height: 72px;
+border-radius: 8px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+
+}
+
+.fotoAndChangeFoto{
+    display: flex;
+    gap: 55px;
+    margin: 20px 0px;
+ 
+}
+
+.cuadradoNav{
+width: 32px;
+height: 36.69px;
+margin-right: 10px;
+border-radius: 8px;
+}
+
+.divImgName{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.containImgAndIcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+
+}
+
+
+.aLink:hover{
+    color: #33b2fc; 
+    transition: 0.3s;
+}
+
+.iconCamara {
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    color: white; 
+}
+
+
+/*DARK MODE*/
+.darkMode{
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    border: solid 2px #828282;
+    margin: 30px 60px 0px;
+}
+
+.a{
+    background-color: #252329;
+    color: white; 
+    transition: 0.4s;
+}
+
+.textwhite{
+    color: white; 
+}
+
+
+
+
+
+input{
+    background-color: transparent;
+    color: gray;
+    width: 100%;
+    height: 100%;
+}
+
+input:focus-within{
+    border: solid 2px #33b2fc;
+}
+
+.moon{
+    color: gray;
+}

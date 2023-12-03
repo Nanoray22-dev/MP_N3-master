@@ -1,17 +1,16 @@
 <?php
-$hostname = 'localhost';
-$username = 'root';
-$database = "auth";
+
+$host = 'localhost';
+$dbname = 'auth';
+$user = 'root';
 $password = '';
-$port = 4000;
-
-
+$port = 8111;
 
 try {
-    $mysqli = new mysqli($hostname, $username, $password,$database,$port);
-} catch (mysqli_sql_exception $e) {
-    echo  "Error: " . $e->getMessage();
-}
 
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
 
 ?>

@@ -1,45 +1,33 @@
 <?php
+require_once '../DB/conn.php';
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $contrasena = $_POST['password'];
 
-    // Hash de la contraseña con password_hash()
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $hash = password_hash($contrasena, PASSWORD_DEFAULT);
+}
 
-    // Insertar el nuevo usuario en la base de datos
-    $hostname = 'localhost';
-    $username = 'root';
-    $database = 'auth';
-    $password_db = '';
-    $port = 4000;
 
-    try {
-        $mysqli = new mysqli($hostname, $username, $password_db, $database, $port);
-        if ($mysqli->connect_error) {
-            die('Connection failed: ' . $mysqli->connect_error);
-        }
+$query = "INSERT INTO usuario (`email`, `password`) VALUE (?,?)";
 
-        // Insertar el nuevo usuario en la base de datos
-        $stmt = $mysqli->prepare("INSERT INTO usuario (email, password) VALUES (?, ?)");
-        $stmt->bind_param("ss", $email, $hashed_password);
-        $stmt->execute();
-        $stmt->close();
+try {
 
-        // Redirigir a login.php
-        header('Location: login.php');
-        exit;
-    } catch (mysqli_sql_exception $e) {
-        echo 'Error: ' . $e->getMessage();
-    } finally {
-        $mysqli->close();
-    }
-// }
-
+    $stm = $pdo->prepare($query);
+    $stm->execute([
+        $email,
+        $hash
+    ]);
+    $userData = $pdo -> prepare("SELECT * FROM usuario WHERE email = ?");
+    $userData -> execute([
+        $email
+    ]);
+    $userResult = $userData -> fetch(PDO::FETCH_ASSOC);
+    session_start();
+    $_SESSION['dato'] = $userResult;
+    header('location: ../user/personal_info.php');
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
 ?>
-
-
-
-
