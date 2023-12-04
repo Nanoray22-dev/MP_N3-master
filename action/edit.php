@@ -4,7 +4,7 @@
 
 require_once '../DB/conn.php';
 session_start(); 
-$user_id= $_SESSION['dato']['id'];
+$dato = $_SESSION['dato']['id'];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto'])){
     $email = $_POST['email'];
@@ -18,7 +18,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto'])){
     $tmp = $_FILES['foto']['tmp_name'];
     $imgName = $_FILES['foto']['nombres'];
     $ext = pathinfo($imgName, PATHINFO_EXTENSION);
-    $url = $base_url . "profile_$user_id." . $ext;
+    $url = $base_url . "profile_$dato." . $ext;
     move_uploaded_file($tmp, $url);
    
 
@@ -31,8 +31,6 @@ try{
     $rs = $stm->execute([
         $email,
         $hash,
-        #$password,
-        #$foto,
         $url, 
         $nombres,
         $bio,

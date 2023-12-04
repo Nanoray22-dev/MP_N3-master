@@ -288,14 +288,6 @@ border-radius: 8px;
 }
 
 
-/*DARK MODE*/
-.darkMode{
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
-    border: solid 2px #828282;
-    margin: 30px 60px 0px;
-}
 
 .a{
     background-color: #252329;
