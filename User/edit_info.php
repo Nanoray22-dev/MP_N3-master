@@ -4,7 +4,7 @@ session_start();
 if (isset($_SESSION['dato'])) {
     $dato = $_SESSION['dato'];
 } else {
-    header('location: ./login.php');
+    header('location: ../user/login.php');
 }
 
 ?>
@@ -20,7 +20,6 @@ if (isset($_SESSION['dato'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 </head>
@@ -373,7 +372,6 @@ if (isset($_SESSION['dato'])) {
 <body>
     <nav class="menu">
         <img src="../assets/devchallenges-light.svg" alt="logo" class="logoOriginal">
-
         <ul id="menuList">
             <div class="clickAndActive">
                 <li>
@@ -394,7 +392,7 @@ if (isset($_SESSION['dato'])) {
                         <li class="liInteractive"><span class="material-symbols-outlined">
                                 account_circle
                             </span>
-                            <a href="./yourInfo.php" class="aTextInteractive">My Profile</a>
+                            <a href="../User/personal_info.php" class="aTextInteractive">My Profile</a>
                         </li>
                     </div>
                     <div class="myProfilePosition">
@@ -410,7 +408,7 @@ if (isset($_SESSION['dato'])) {
                         <li class="liInteractive3"><span class="material-symbols-outlined logOutText">
                                 logout
                             </span>
-                            <a href="./LOGIC/destroy.php" class="logOutText aTextInteractive">Logout</a>
+                            <a href="../action/logout.php" class="logOutText aTextInteractive">Logout</a>
                         </li>
                     </div>
                 </ul>
@@ -425,10 +423,8 @@ if (isset($_SESSION['dato'])) {
 
     <div class="bigContainerAll">
         <section>
-            <a href="../User/personal_info.php" class="linkBack">
-                < Back</a>
+            <a href="../User/personal_info.php" class="linkBack">< Back</a>
                     <section class="container">
-
                         <h2 class="changeInfo">Change Info</h2>
                         <p class="changesWill">Changes will be reflected to every services</p>
                         <form action="../action/edit.php" method="POST" enctype="multipart/form-data">

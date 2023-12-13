@@ -1,11 +1,13 @@
-*{
+/* *{
     box-sizing: border-box;
     padding: 0%;
     margin: 0%;
     font-family: 'Noto Sans', sans-serif;
 
 }
-
+body{
+    background-color: #333;
+}
 nav{
     padding: 10px 80px;
     display: flex;
@@ -132,16 +134,16 @@ border: 1px;
 border: 1px solid #E0E0E0;
 visibility: hidden;
 position: absolute;
-/*mueve la posicion de la caja interactiva*/
+
 top: 50px;
 right: 20px;
 
 }
 
 
-/*ETIQUETA QUE AGREGA COLOR*/
+
 .myProfileNav{
-width: 154.12px; /*164.12*/
+width: 154.12px; 
 height: 39.15px;
 border-radius: 8px;
 background: #F2F2F2;
@@ -316,4 +318,4 @@ input:focus-within{
 
 .moon{
     color: gray;
-}
+} */
